@@ -11,7 +11,6 @@ import sqlite3
 import schedule
 from datetime import datetime
 from selenium.webdriver.common.action_chains import ActionChains
-import discord_webhook
 
 opt = Options()
 opt.add_argument("--disable-infobars")
@@ -31,7 +30,7 @@ driver = None
 URL = "https://teams.microsoft.com"
 
 #put your teams credentials here
-CREDS = {'email' : '','passwd':''}
+CREDS = {'K2146411@kingston.ac.uk' : '','Cannes19871984':''}
 
 
 
@@ -178,7 +177,6 @@ def joinclass(class_name,start_time,end_time):
 	joinnowbtn = driver.find_element_by_xpath('//*[@id="page-content-wrapper"]/div[1]/div/calling-pre-join-screen/div/div/div[2]/div[1]/div[2]/div/div/section/div[1]/div/div/button')
 	joinnowbtn.click()
 
-	discord_webhook.send_msg(class_name=class_name,status="joined",start_time=start_time,end_time=end_time)
 	
 	#now schedule leaving class
 	tmp = "%H:%M"
@@ -195,7 +193,7 @@ def joinclass(class_name,start_time,end_time):
 
 	driver.find_element_by_xpath('//*[@id="hangup-button"]').click()
 	print("Class left")
-	discord_webhook.send_msg(class_name=class_name,status="left",start_time=start_time,end_time=end_time)
+	
 
 
 
